@@ -11,6 +11,11 @@ var index = require('./routes/index');
 
 var app = express();
 
+//模块
+var mongoose = require('mongoose')
+mongoose.connect('mongodb://localhost/express2');
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 
