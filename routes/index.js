@@ -1,8 +1,11 @@
 var express = require('express');
 var router = express.Router();
+
 var regionRoutes = require('./regionRoutes')
 var orgRoutes = require('./orgRoutes')
 var orgToRetionRoutes = require('./orgToRetionRoutes')
+var authorityRoutes = require('./authorityRoutes')
+var roleRoutes = require('./roleRoutes')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -20,6 +23,11 @@ router.use('/org',orgRoutes);
 router.use('/ortoreion',orgToRetionRoutes);
 
 //权限
+router.use('/authority',authorityRoutes);
+
+//角色
+router.use('/role',roleRoutes);
+
 
 
 
