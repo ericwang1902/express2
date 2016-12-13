@@ -47,7 +47,13 @@ module.exports = {
      * orgController.create()
      */
     create: function (req, res) {
-        var org = new orgModel({			orgname : req.body.orgname,			orgcompany : req.body.orgcompany,			orgaccount : req.body.orgaccount,			orgpsd : req.body.orgpsd
+        var org = new orgModel({
+			orgname : req.body.orgname,
+            description:req.body.description,
+            address:req.body.address,
+			orgcompany : req.body.orgcompany,
+			orgaccount : req.body.orgaccount,
+			orgpsd : req.body.orgpsd
         });
 
         org.save(function (err, org) {
@@ -79,7 +85,14 @@ module.exports = {
                 });
             }
 
-            org.orgname = req.body.orgname ? req.body.orgname : org.orgname;			org.orgcompany = req.body.orgcompany ? req.body.orgcompany : org.orgcompany;			org.orgaccount = req.body.orgaccount ? req.body.orgaccount : org.orgaccount;			org.orgpsd = req.body.orgpsd ? req.body.orgpsd : org.orgpsd;			
+            org.orgname = req.body.orgname ? req.body.orgname : org.orgname;
+            org.description = req.body.description ? req.body.description : org.description;
+            org.address = req.body.address ? req.body.address : org.address;
+			org.orgcompany = req.body.orgcompany ? req.body.orgcompany : org.orgcompany;
+			org.orgaccount = req.body.orgaccount ? req.body.orgaccount : org.orgaccount;
+			org.orgpsd = req.body.orgpsd ? req.body.orgpsd : org.orgpsd;
+
+			
             org.save(function (err, org) {
                 if (err) {
                     return res.status(500).json({

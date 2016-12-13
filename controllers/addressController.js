@@ -47,7 +47,11 @@ module.exports = {
      * addressController.create()
      */
     create: function (req, res) {
-        var address = new addressModel({			region : req.body.region,			detailAdd : req.body.detailAdd,			phone : req.body.phone
+        var address = new addressModel({
+			region : req.body.region,
+			detailAdd : req.body.detailAdd,
+			phone : req.body.phone,
+            name:req.body.name
         });
 
         address.save(function (err, address) {
@@ -79,7 +83,11 @@ module.exports = {
                 });
             }
 
-            address.region = req.body.region ? req.body.region : address.region;			address.detailAdd = req.body.detailAdd ? req.body.detailAdd : address.detailAdd;			address.phone = req.body.phone ? req.body.phone : address.phone;			
+            address.region = req.body.region ? req.body.region : address.region;
+			address.detailAdd = req.body.detailAdd ? req.body.detailAdd : address.detailAdd;
+			address.phone = req.body.phone ? req.body.phone : address.phone;
+			address.name = req.body.name ? req.body.phone : address.name;
+
             address.save(function (err, address) {
                 if (err) {
                     return res.status(500).json({
@@ -107,5 +115,7 @@ module.exports = {
             }
             return res.status(204).json();
         });
-    }
+    },
+    //根据参数查找
+
 };
